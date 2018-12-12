@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>车次后台</title>
+  <style>
+    .container{
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      top: 20px;
+    }
+    .standard{
+      display: block;
+      position: relative;
+      margin: 0 auto;
+      width: 169px;
+    }
+    .container span {
+      position: relative;
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .StaitionArrary{
+      position: relative;
+    }
+    .wrapper{
+      position: relative;
+      margin: 0 auto;
+      width: 173px;
+      text-align: center;
+    }
+    .firstadd{
+      width: 145px;
+      height: 15px;
+      display: block;
+      float: left;
+    }
+    .submit{
+      display: block;
+      position: relative;
+      margin: 10px auto 0 auto;
+    }
+    .wrapper_input{
+      display: block;
+      position: relative;
+      margin: 4px auto 0 auto;
+      width: 169px;
+    }
+    .add{
+      display: block;
+      margin: 0 auto;
+    }
+    .title{
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      font: 50px bold;
+    }
+  </style>
+</head>
+<body>
+<span class="title">车次管理系统</span>
+<form class="container" method="post" action="/trainback">
+  <span>车次</span>
+  <input class="standard" name="_name">
+  <div class="StaitionArrary">
+    <span>车站信息</span>
+    <div class="wrapper">
+      <input class="firstadd" name="Station[1]">
+      <button type="button" class="add">+</button>
+    </div>
+  </div>
+  <div>
+    <button type="button" class="submit">提交信息</button>
+  </div>
+</form>
+<script>
+  window.onload =function () {
+    var btn = document.getElementsByClassName("add")[0];
+    var i = 3;
+    btn.onclick = function () {
+      var wraper = document.getElementsByClassName("wrapper")[0];
+      var input = document.createElement("input");
+      input.setAttribute("class", "wrapper_input");
+      input.setAttribute("name", "Station"+"["+i+"]");
+      i ++;
+      wraper.appendChild(input);
+    };
+    var submit_btn = document.getElementsByClassName("submit")[0];
+    submit_btn.onclick=function () {
+      var form = document.forms[0];
+      form.submit();
+    };
+  }
+</script>
+</body>
+</html>
